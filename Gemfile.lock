@@ -96,7 +96,6 @@ DEPENDENCIES
   grape-active_model_serializers (~> 1.3.2)
   grape-swagger
   jwt
-  kramdown
   pg
   rack-cors
   rake

@@ -13,7 +13,6 @@ gem 'grape-active_model_serializers', '~> 1.3.2'
 
 gem 'grape-swagger'
 gem 'rack-cors', require: 'rack/cors'
-gem 'kramdown'
 
 gem 'jwt'
 gem 'awesome_print'
