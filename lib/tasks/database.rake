@@ -2,15 +2,16 @@ require 'yaml'
 require 'logger'
 require 'active_record'
 require 'active_support/core_ext/string/strip'
+require "erb"
 
 namespace :db do
   task :environment do
-    DATABASE_ENV = ENV['DATABASE_ENV'] || 'development'
+    DATABASE_ENV = ENV['RACK_ENV'] || 'development'
     MIGRATIONS_DIR = ENV['MIGRATIONS_DIR'] || 'db/migrate'
   end
 
   task :connection => :environment do
-    @config = YAML.load_file('./config/database.yml')[DATABASE_ENV]
+    @config = YAML.load(ERB.new('./config/database.yml').result)[DATABASE_ENV]
     ActiveRecord::Base.establish_connection @config
     ActiveRecord::Base.logger = Logger.new STDOUT
   end
