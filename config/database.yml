@@ -3,8 +3,3 @@ development:
   database: mary-jane
   pool: 5
   encoding: unicode
-
-production:
-  adapter: postgresql
-  pool: 5
-  encoding: unicode
