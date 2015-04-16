@@ -3,8 +3,6 @@ require './config/application.rb'
 task :console do
   require 'irb'
   require 'irb/completion'
-  require 'awesome_print'
-
   ARGV.clear
   IRB.start
 end
