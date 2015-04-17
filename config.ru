@@ -16,6 +16,8 @@ module MaryJane
     end
 
     rescue_from Exception do |e|
+      p e.message
+      p e.backtrace
       rack_response({ errors: [e.message] }.to_json, 500)
     end
 
@@ -29,10 +31,10 @@ module MaryJane
     # mount controllers below
     [Users, Records, Auth].each { |controller| mount controller }
 
-    add_swagger_documentation({
-      api_version: "v1",
-      mount_path: "documentation"
-    })
+    add_swagger_documentation(
+      mount_path: '/docs',
+      api_version: 'v1'
+    )
   end
 end
 

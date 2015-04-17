@@ -10,9 +10,9 @@ gem 'thin'
 
 gem 'grape'
 gem 'grape-active_model_serializers', '~> 1.3.2'
+gem 'rack-cors', require: 'rack/cors'
 
 gem 'grape-swagger'
-gem 'rack-cors', require: 'rack/cors'
 
 gem 'jwt'
 gem 'awesome_print'
