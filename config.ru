@@ -33,7 +33,8 @@ module MaryJane
 
     add_swagger_documentation(
       mount_path: '/docs',
-      api_version: 'v1'
+      api_version: 'v1',
+      hide_format: true
     )
   end
 end
