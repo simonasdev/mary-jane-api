@@ -23,7 +23,7 @@ class Records < Grape::API
       Record.last
     end
 
-    namespace '/:id' do
+    namespace '/:id', requirements: { id: /[0-9]*/ } do
       before do
         @record = Record.find params[:id]
       end

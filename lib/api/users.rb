@@ -19,7 +19,7 @@ class Users < Grape::API
       User.create declared(params)
     end
 
-    namespace '/:id' do
+    namespace '/:id', requirements: { id: /[0-9]*/ } do
       before do
         @user = User.find params[:id]
       end

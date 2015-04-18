@@ -11,7 +11,8 @@ class Auth < Grape::API
       if @user && @user.authenticate(params[:password])
         { user: UserSerializer.new(@user), token: Token.encode(@user.id) }
       else
-        error!({ errors: ['Invalid credentials'] }, 401)
+        status 401
+        { errors: ['Invalid credentials'] }
       end
     end
   end
