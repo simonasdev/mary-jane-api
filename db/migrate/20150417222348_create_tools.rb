@@ -1,6 +1,6 @@
-class CreateMethods < ActiveRecord::Migration
+class CreateTools < ActiveRecord::Migration
   def change
-    create_table :methods do |t|
+    create_table :tools do |t|
       t.string :name
       t.text :comment
 

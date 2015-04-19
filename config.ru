@@ -25,7 +25,7 @@ module MaryJane
     end
 
     # mount controllers below
-    [Users, Records, Auth, Methods].each { |controller| mount controller }
+    [Users, Records, Auth, Tools].each { |controller| mount controller }
 
     add_swagger_documentation(
       mount_path: '/docs',
