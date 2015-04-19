@@ -3,7 +3,7 @@ require './config/application'
 module MaryJane
   class API < Grape::API
     version 'v1', using: :path
-    content_type :json, "application/json;charset=UTF-8"
+    content_type :json, "application/json"
     format :json
     formatter :json, Grape::Formatter::ActiveModelSerializers
 
