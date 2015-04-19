@@ -1,4 +1,6 @@
 class Users < Grape::API
+  [APIHelper, AuthHelper].each { |helper| helpers helper }
+
   resources :users do
     before do
       # authenticate_user!
@@ -16,7 +18,7 @@ class Users < Grape::API
       optional :photo, type: String, desc: "User photo as base64"
     end
     post do
-      User.create declared(params)
+      User.create declared_params
     end
 
     namespace '/:id', requirements: { id: /[0-9]*/ } do
@@ -36,7 +38,7 @@ class Users < Grape::API
         optional :photo, type: String, desc: "User photo as base64"
       end
       patch do
-        @user.update declared(params)
+        @user.update declared_params
       end
 
       desc 'Destroy a user'

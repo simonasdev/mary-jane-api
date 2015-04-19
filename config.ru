@@ -11,10 +11,6 @@ module MaryJane
       rack_response({ errors: ['Not Found'] }.to_json, 404)
     end
 
-    rescue_from ActiveRecord::RecordInvalid do |e|
-      rack_response({ errors: e.record.errors }.to_json, 422)
-    end
-
     rescue_from Exception do |e|
       p e.message
       p e.backtrace
@@ -29,7 +25,7 @@ module MaryJane
     end
 
     # mount controllers below
-    [Users, Records, Auth].each { |controller| mount controller }
+    [Users, Records, Auth, Methods].each { |controller| mount controller }
 
     add_swagger_documentation(
       mount_path: '/docs',

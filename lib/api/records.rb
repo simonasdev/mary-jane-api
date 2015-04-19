@@ -1,4 +1,6 @@
 class Records < Grape::API
+  [APIHelper, AuthHelper].each { |helper| helpers helper }
+
   resources :records do
     before do
       # authenticate_user!
@@ -15,7 +17,7 @@ class Records < Grape::API
       requires :high, type: Float, desc: '10/10'
     end
     post do
-      Record.create declared(params).merge user_id: current_user.id
+      Record.create declared_params.merge user_id: current_user.id
     end
 
     desc 'Get latest toke'
@@ -40,7 +42,7 @@ class Records < Grape::API
       end
       patch do
         halt 403 unless @record.user_id == current_user.id
-        @record.update declared(params)
+        @record.update declared_params
       end
 
       desc 'Destroy a toke'

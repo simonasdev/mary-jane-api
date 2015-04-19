@@ -1,4 +1,6 @@
-class Auth < Grape::API
+class Methods < Grape::API
+  [APIHelper, AuthHelper].each { |helper| helpers helper }
+
   resources :methods do
     before do
       # authenticate_user!
@@ -15,7 +17,7 @@ class Auth < Grape::API
       optional :comment, type: String, desc: 'Comment for method'
     end
     post do
-      Method.create declared(params)
+      Method.create declared_params
     end
 
     namespace '/:id', requirements: { id: /[0-9]*/ } do
@@ -34,7 +36,7 @@ class Auth < Grape::API
         optional :comment, type: String, desc: 'Comment for method'
       end
       patch do
-        @method.update declared(params)
+        @method.update declared_params
       end
 
       desc 'Destroy a method'
