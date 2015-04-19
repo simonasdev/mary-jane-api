@@ -17,7 +17,7 @@ class Records < Grape::API
       requires :high, type: Float, desc: '10/10'
     end
     post do
-      Record.create declared_params.merge user_id: current_user.id
+      current_user.records.create declared_params
     end
 
     desc 'Get latest toke'
@@ -25,7 +25,7 @@ class Records < Grape::API
       Record.last
     end
 
-    namespace '/:id', requirements: { id: /[0-9]*/ } do
+    namespace '/:id', requirements: { id: /[0-9]/ } do
       before do
         @record = Record.find params[:id]
       end

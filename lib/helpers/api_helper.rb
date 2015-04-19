@@ -1,6 +1,6 @@
 module APIHelper
   def declared_params
-    declared(params, include_missing: false).to_h
+    declared params, include_missing: false
   end
 
   def current_user

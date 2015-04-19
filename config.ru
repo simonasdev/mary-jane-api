@@ -11,19 +11,6 @@ module MaryJane
       rack_response({ errors: ['Not Found'] }.to_json, 404)
     end
 
-    rescue_from Exception do |e|
-      p e.message
-      p e.backtrace
-      rack_response({ errors: [e.message] }.to_json, 500)
-    end
-
-    use Rack::Cors do
-      allow do
-        origins '*'
-        resource '*', headers: :any, methods: [ :get, :post, :put, :delete, :options ]
-      end
-    end
-
     # mount controllers below
     [Users, Records, Auth, Tools].each { |controller| mount controller }
 
@@ -32,6 +19,13 @@ module MaryJane
       api_version: 'v1',
       hide_format: true
     )
+  end
+end
+
+use Rack::Cors do
+  allow do
+    origins '*'
+    resource '*', headers: :any, methods: [ :get, :post, :put, :delete, :options ]
   end
 end
 

@@ -20,7 +20,7 @@ class Tools < Grape::API
       Tool.create declared_params
     end
 
-    namespace '/:id', requirements: { id: /[0-9]*/ } do
+    namespace '/:id', requirements: { id: /[0-9]/ } do
       before do
         @tool = Tool.find params[:id]
       end

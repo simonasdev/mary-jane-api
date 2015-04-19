@@ -18,3 +18,4 @@ gem 'jwt'
 gem 'awesome_print'
 gem 'byebug'
 gem 'bcrypt'
+gem "hashie-forbidden_attributes"
