@@ -39,11 +39,15 @@ class Users < Grape::API
       end
       patch do
         @user.update declared_params
+
+        status :no_content
       end
 
       desc 'Destroy a user'
       delete do
         @user.destroy
+
+        status :no_content
       end
     end
   end

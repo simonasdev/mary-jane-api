@@ -43,12 +43,16 @@ class Records < Grape::API
       patch do
         halt 403 unless @record.user_id == current_user.id
         @record.update declared_params
+
+        status :no_content
       end
 
       desc 'Destroy a toke'
       delete do
         halt 403 unless @record.user_id == current_user.id
         @record.destroy
+
+        status :no_content
       end
     end
   end

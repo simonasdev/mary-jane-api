@@ -37,11 +37,15 @@ class Tools < Grape::API
       end
       patch do
         @tool.update declared_params
+
+        status :no_content
       end
 
       desc 'Destroy a tool'
       delete do
         @tool.destroy
+
+        status :no_content
       end
     end
   end
