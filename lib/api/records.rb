@@ -44,7 +44,7 @@ class Records < Grape::API
         halt 403 unless @record.user_id == current_user.id
         @record.update declared_params
 
-        status :no_content
+        status 204
       end
 
       desc 'Destroy a toke'
@@ -52,7 +52,7 @@ class Records < Grape::API
         halt 403 unless @record.user_id == current_user.id
         @record.destroy
 
-        status :no_content
+        status 204
       end
     end
   end
