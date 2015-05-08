@@ -8,8 +8,7 @@ class Records < Grape::API
 
     desc 'Get all records of tokes'
     get do
-      halt 401
-      Record.all
+      Record.includes(:user)
     end
 
     desc 'Create a record of a toke'
@@ -42,7 +41,7 @@ class Records < Grape::API
         optional :high, type: Float, desc: '10/10'
       end
       patch do
-        halt 403 unless @record.user_id == current_user.id
+        error! 'Forbidden', 403 unless @record.user_id == current_user.id
         @record.update declared_params
 
         status 204
@@ -50,7 +49,7 @@ class Records < Grape::API
 
       desc 'Destroy a toke'
       delete do
-        halt 403 unless @record.user_id == current_user.id
+        error! 'Forbidden', 403 unless @record.user_id == current_user.id
         @record.destroy
 
         status 204
