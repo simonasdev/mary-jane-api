@@ -8,6 +8,7 @@ class Records < Grape::API
 
     desc 'Get all records of tokes'
     get do
+      halt 401
       Record.all
     end
 

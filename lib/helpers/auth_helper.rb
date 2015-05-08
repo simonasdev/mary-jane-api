@@ -4,7 +4,7 @@ module AuthHelper
   end
 
   def unauthorized!
-    error! '', 401
+    halt 401
   end
 
   def set_current_user
