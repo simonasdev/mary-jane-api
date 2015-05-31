@@ -14,7 +14,7 @@ class Records < Grape::API
     desc 'Create a record of a toke'
     params do
       requires :amount, type: Float, desc: 'Amount of fun'
-      requires :high, type: Float, desc: '10/10',
+      requires :high, type: Float, desc: '10/10'
       requires :tool_id, type: Integer, desc: 'ID of tool used'
     end
     post do
