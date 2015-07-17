@@ -3,3 +3,9 @@ development:
   database: mary-jane
   pool: 5
   encoding: unicode
+production:
+  adapter: postgresql
+  database: mary-jane
+  pool: 5
+  encoding: unicode
+  url: ENV['HEROKU_POSTGRESQL_TEAL_URL']
